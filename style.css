@@ -1,0 +1,176 @@
+/* --- الإعدادات الأساسية --- */
+:root {
+    --primary: #c13eec; /* التدرج البنفسجي من الصورة */
+    --accent: #f53bd5; /* التدرج الوردي من الصورة */
+    --secondary: #4a1975;
+    --bg-dark: #07070a; /* خلفية داكنة جداً للتباين */
+    --text-color: #ffffff;
+    --glass: rgba(255, 255, 255, 0.03);
+    /* تدرج الأساطير */
+    --arenox-gradient: linear-gradient(90deg, #f53bd5 0%, #c13eec 100%);
+    --neon-glow: 0 0 20px rgba(193, 62, 236, 0.5);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    /* التعديل هنا: دمج التدرج اللوني مع الصورة */
+    background: linear-gradient(rgba(7, 7, 10, 0.8), rgba(7, 7, 10, 0.8)), url('s.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- تنسيق كلمة ArenoX كمتدرج --- */
+.arenox-text {
+    background: var(--arenox-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    display: inline-block; /* لضمان تطبيق التدرج على النص */
+}
+
+/* --- الشعار (تحسين تأثير النيون المستمر) --- */
+.ArenoX-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px; /* شكل عصري للبطولة */
+    margin-top: 30px;
+    border: 3px solid var(--accent); /* حدود وردية زاهية */
+    box-shadow: var(--neon-glow), inset var(--neon-glow); /* توهج خارجي وداخلي */
+    animation: float 3s ease-in-out infinite, pulse 1.5s ease-in-out infinite; /* حركتان متزامنتان */
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { border-color: var(--accent); box-shadow: 0 0 20px rgba(245, 59, 213, 0.4); }
+    50% { border-color: var(--primary); box-shadow: 0 0 40px rgba(193, 62, 236, 0.8); }
+}
+
+/* --- النصوص --- */
+h1 {
+    font-size: 2.8rem;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    /* تطبيق تدرج الأساطير على H1 بالكامل */
+    background: var(--arenox-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+h1 strong.arenox-text { /* لضمان بقاء التدرج على H1 حتى لو كان النص بداخله Strong */
+    -webkit-text-fill-color: transparent;
+    display: inline;
+}
+
+.about-section {
+    max-width: 600px;
+    line-height: 1.8;
+    color: #e1e1e1;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+/* --- الأزرار (تصميم ميكانيكي حديث ونفس الألوان المتدرجة) --- */
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 450px;
+    padding: 18px 30px;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08); /* حدود أكثر دقة */
+    transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); /* تأثير حركة ميكانيكي مخصص */
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* إضافة خط جانبي ميكانيكي عند التمرير */
+.btn::before {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; height: 100%; width: 4px;
+    background: var(--arenox-gradient); /* تدرج جانبي */
+    transform: scaleY(0);
+    transition: 0.3s;
+}
+
+.btn:hover::before { transform: scaleY(1); }
+
+.btn:hover {
+    background: rgba(132, 46, 201, 0.1); /* تظليل بنفسجي عند التحويم */
+    transform: translateX(-8px) scale(1.02); /* حركة أقوى قليلاً */
+    border-color: rgba(132, 46, 201, 0.3);
+    box-shadow: var(--neon-glow);
+}
+
+.btn i {
+    font-size: 1.5rem;
+    background: var(--arenox-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* --- عداد الزيارات (تصميم عصري متوهج) --- */
+.visit-count {
+    background: rgba(0,0,0,0.4); /* خلفية داكنة لبروز العداد */
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+    border: 1px solid rgba(132, 46, 201, 0.2);
+}
+
+/* --- التذييل --- */
+footer {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    padding: 30px;
+    color: #555;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+footer .arenox-text {
+    font-size: 0.9rem;
+}
+
+/* --- استجابة الشاشات (Responsive) --- */
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    .btn { padding: 15px 20px; font-size: 1rem; }
+    .ArenoX-logo { width: 110px; height: 110px; }
+}

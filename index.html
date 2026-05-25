@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArenoX | منصة البطولات الإلكترونية</title>
+
+    <meta name="description" content="منصة ArenoX للبطولات الإلكترونية. طريقك للاحتراف يبدأ من هنا!">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="ArenoX.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container" role="main">
+        <img src="ArenoX.jpg" alt="ArenoX-logo" class="ArenoX-logo" id="ArenoX">
+
+        <div class="header-row">
+            <h1 id="name">ArenoX Links</h1>
+        </div>
+
+        <section class="about-section">
+            <section class="about-section">
+                <p>
+                    مرحبًا بكم في <strong class="arenox-text">ArenoX</strong>، وجهتكم الأولى لبطولات <strong
+                        class="arenox-text">eFootball (PES)</strong>. نحن هنا لنرتقي بتجربتكم التنافسية؛ سواء كنت
+                    محترفاً يبحث عن لقب جديد أو هاوياً يطمح لإثبات مهاراته، فإن [<strong
+                        class="arenox-text">ArenoX</strong>] هي الساحة التي ستصنع فيها أمجادك.
+                </p>
+            </section>
+        </section>
+
+        <nav aria-label="Social Links">
+            <a class="btn" href="https://www.instagram.com/are.nox?igsh=MWQ0ZmI4eWE5c2p0dA==" target="_blank"
+                id="instagram">
+                <span class="visit-count" id="count-instagram">0</span>
+                <span class="text-username"> <strong class="arenox-text">are.nox</strong></span>
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a class="btn" href="https://www.facebook.com/share/1CnYJyZErw/" target="_blank" id="facebook">
+                <span class="visit-count" id="count-facebook">0</span>
+                <span class="text-username"> <strong class="arenox-text">Arenox Ax</strong></span>
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <a class="btn" href="https://t.me/arenox7" target="_blank" id="telegram">
+                <span class="visit-count" id="count-telegram">0</span>
+                <span class="text-username"> <strong class="arenox-text">arenox7</strong></span>
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+
+            <a class="btn" href="https://www.tiktok.com/@arenox7?_r=1&_t=ZS-96fI8gDjNlk" target="_blank" id="tiktok">
+                <span class="visit-count" id="count-tiktok">0</span>
+                <span class="text-username"> <strong class="arenox-text">ArenoX</strong></span>
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a class="btn" href="https://www.youtube.com/@Aren.0X" target="_blank" id="youtube">
+                <span class="visit-count" id="count-youtube">0</span>
+                <span class="text-username"> <strong class="arenox-text">Aren.0X</strong></span>
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a class="btn" href="mailto:playarenox@gmail.com" id="email">
+                <span class="visit-count" id="count-email">0</span>
+                <span class="text-username"> <strong class="arenox-text">Email</strong></span>
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a class="btn" href="#" id="share" onclick="copyLink(event)">
+                <span class="visit-count" id="count-share">0</span>
+                <span class="text-username"> <strong class="arenox-text">مشاركة الصفحة</strong></span>
+                <i class="fa-solid fa-share-nodes"></i>
+            </a>
+            <a class="btn" href="" id="ArenoX">
+                <span class="visit-count" id="count-ArenoX">0</span>
+                <span class="text-username"> <strong class="arenox-text">منصة ArenoX قريباً</strong></span>
+                <i class="fa-solid fa-globe"></i>
+            </a>
+        </nav>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 <strong class="arenox-text">ArenoX</strong></p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // عداد الزيارات
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                const id = btn.id;
+                let count = localStorage.getItem(`count_${id}`) || 0;
+                const countSpan = btn.querySelector('.visit-count');
+                if (countSpan) countSpan.innerText = count;
+
+                btn.addEventListener('click', () => {
+                    if (id !== 'email' && id !== 'share') {
+                        count++;
+                        localStorage.setItem(`count_${id}`, count);
+                        countSpan.innerText = count;
+                    }
+                });
+            });
+
+            // وظيفة المشاركة
+            window.copyLink = (e) => {
+                if (e) e.preventDefault();
+                navigator.clipboard.writeText(window.location.href);
+                alert('تم نسخ رابط المنصة بنجاح!');
+            };
+
+            // تأثير الظهور
+            const btns = document.querySelectorAll('.btn');
+            btns.forEach((btn, index) => {
+                btn.style.opacity = '0';
+                btn.style.transform = 'translateY(20px)';
+                btn.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                setTimeout(() => { btn.style.opacity = '1'; btn.style.transform = 'translateY(0)'; }, 100);
+            });
+        });
+    </script>
+</body>
+
+</html>
